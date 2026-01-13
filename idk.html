@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="idk.css">
+</head>
+<body>
+    <!--========================
+        SECOND TAB//CHROME TAB
+    ===========================-->
+
+    <div id="SecondTopBar-Container"> 
+        <span id="arrowDown">&#8964;</span>
+        <div id="Chrome-Tab">
+            <img src="img/globe.png"  alt="" id="globe">
+            <span id="Document">Document</span>
+            <img id="close" src="img/close.png" alt="" onclick="closeBtn()">
+        </div>
+    </div>
+    <div>
+        <span id="tool">
+            <img class="img" src="img/back.jpg" alt="error">
+            <img class="img" src="img/forth.jpg" alt="">
+            <img onclick="hello()" class="img" id="refresh" src="img/refresh.png" alt="">
+            <span id="search-bar">
+                <img id="circle-i" src="img/circle-with-i-.png" alt="">
+                <span id="http">http://127.0.0.1:5500/Document.html</span>
+            </span>
+        </span>
+    </div>
+    <div id="just-A-normal-grey-Line"></div>
+
+    <div>
+        <h1> 
+            The page refuses to load. <br>
+            A single line of HTML is breaking everything.
+        </h1>
+        
+    </div>
+
+
+    <!--========================
+                dialog
+    ===========================-->
+
+
+    <div id="error-overlay" class="overlay">
+        <div class="vn-container">
+            <div class="name-tag">You</div>
+            <div class="dialog-box">
+                <div class="note">NOTE</div>
+                <div class="dialog-text">
+                    <p id="dialog-message"></p>
+                </div>
+                <div class="next-arrow" onclick="changeText()">❯</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="idk.js"></script>
+</body>
+</html>
