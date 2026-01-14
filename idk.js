@@ -38,9 +38,7 @@ function changeText() {
 
     if (!message) return;
 
-    // --- TRIGGER THE SHOCK ---
-
-
+    
     // Logic for messages
     clickCount++;
     i = 0;
@@ -48,9 +46,11 @@ function changeText() {
 
     if (clickCount === 1) {
         currentMessage = "Wait... WHAT IS THAT?!"; 
-        container.classList.remove("shock-effect"); 
-        void container.offsetWidth; 
-        container.classList.add("shock-effect"); 
+        if (container) {
+            container.classList.remove("shock-effect"); 
+            void container.offsetWidth; 
+            container.classList.add("shock-effect");
+        } 
     } else if (clickCount === 2) {
         currentMessage = "why did the code become error??";
     } else {
@@ -62,10 +62,36 @@ function changeText() {
     type();
 }
 
-
+// Keyboard shortcut for Ctrl+S
 document.addEventListener("keydown", function(event) {
     if ((event.ctrlKey || event.metaKey) && event.key === 's') {
         event.preventDefault();
         changeText();
+
+        player.takeDamage(enemy.strength); 
+        enemy.takeDamage(player.strength);
     }
 });
+
+/*=======================
+        objects
+========================*/
+
+class Character {
+    constructor(name, health, strength) {
+        this.name = name;
+        this.health = health;
+        this.strength = strength;
+    }
+
+    //method for taking damage
+    takeDamage(amount) {
+        this.health -= amount;
+        console.log(`${this.name} now has ${this.health} HP left.`);
+    }
+}
+
+const player = new Character("You", 100, 20);
+const enemy = new Character("error", 50, 10);
+
+console.log(player);
