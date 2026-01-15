@@ -4,136 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-    /*======================
-            dialog
-    =======================*/
-    .overlay {
-        display: flex; 
-        position: fixed;
-        bottom: 1px; left: 0;
-        width: 100%; height: 100%;
-        justify-content: center;
-        align-items: flex-end; /* Keeps it at the bottom like a game */
-        padding-bottom: 50px;
-        z-index: 9999;
-    }
-
-    .vn-container {
-        width: 90%;
-        max-width: 1000px;
-        position: relative;
-    }
-
-    .name-tag {
-        background: #60a5fa; /* The blue from your image */
-        color: white;
-        padding: 8px 30px;
-        border-radius: 10px 10px 0 0;
-        display: inline-block;
-        font-weight: bold;
-        margin-left: 10px;
-    }
-
-    .dialog-box {
-        background: rgba(255, 255, 255, 0.95); /* Creamy white */
-        border: 2px solid #fb923c; /* Orange border from image */
-        border-radius: 15px;
-        padding: 30px;
-        position: relative;
-        min-height: 150px;
-    }
-
-    .note {
-        position: absolute;
-        top: 10px; right: 20px;
-        background: #ffedd5;
-        color: #f97316;
-        padding: 2px 10px;
-        border-radius: 5px;
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .dialog-text {
-        color: #1e40af; /* Deep blue text color */
-        font-size: 24px;
-        font-weight: bold;
-        line-height: 1.5;
-    }
-
-    .error-line {
-        font-family: monospace;
-        background: #f1f5f9;
-        padding: 5px;
-        font-size: 18px;
-        margin-top: 10px;
-    }
-
-    .next-arrow {
-        position: absolute;
-        bottom: 20px; right: 30px;
-        color: #60a5fa;
-        font-size: 30px;
-        cursor: pointer;
-        animation: bounce 1s infinite;
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(10px); }
-    }
-
-    .skills-button {
-        position: relative;
-        left: 585px;
-        top: 20px;
-
-
-    }
-
-    .skills {
-        background-color: #60a5fa;
-        border: none;
-        color: white;
-        width: 150px;
-        height: 50px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 8px;
-
-
-    }
-    </style>
+    <link rel="stylesheet" href="testfile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>hello</h1>
+    <input type="text" id="input-name" placeholder="Type your Name..."> 
 
+<div class="main-ui-wrapper">
 
-    <div id="box-UI" class="overlay">
-        <div class="vn-container">
-            <div class="name-tag">You</div>
-            <div class="dialog-box">
-                <div class="note">NOTE</div>
-                <div class="skills-button">
-                    <button onclick="attack()" class="skills">attack</button>
-                    <button onclick="defense()" class="skills">defense</button><br>
-                    <button onclick="attack()" class="skills">attack</button>
-                    <button onclick="defense()" class="skills">defense</button>
+    <div class="UI-ATTACK-container">
+        <div class="UI-ATTACK-FIRST-BORDER">
+            <div class="UI-ATTACK-SECOND-BORDER">
+
+                <div>
+                    <button id="">Attack</button>
+                    <button id="">Defend</button>
+                    <button id="">Item</button>
                 </div>
-                <div class="dialog-text">
-                    <p id="dialog-message"></p>
-                </div>
-                <div class="next-arrow" onclick="changeText()">❯</div>
+
             </div>
         </div>
     </div>
 
+    <div class="UI-hp-mp-container">
+        <div class="UI-hp-mp-FIRST-BORDER">
+            <div class="UI-hp-mp-SECOND-BORDER">
+                <div class="status-text-container">
+                    <div id="display">hp</div>
+                    <div id="">mp</div>
+                </div>
+                <div id="display-name">lol</div>
+            </div>
+        </div>
+    </div>
+   
 
+</div>
 <script src="testfile.js"></script>
 </body>
 </html>

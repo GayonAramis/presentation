@@ -1,0 +1,79 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+.main-ui-wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    gap: 10px;               
+    margin-top: 450px;        
+
+}
+
+/* Button */
+button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: transparent;
+    border: transparent;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+}
+
+button:hover {
+    color: yellow;
+}
+
+/* UI ATTACK */
+.UI-ATTACK-container {
+    border: 5px solid black;
+    width: 200px;
+    height: 180px;
+    padding: 2px;
+}
+
+.UI-ATTACK-FIRST-BORDER {
+    border: 5px solid white;
+}
+
+.UI-ATTACK-SECOND-BORDER {
+    background-color: black;
+    border: 5px solid black;
+    height: 163px;
+}
+
+/* UI HP/MP */
+.UI-hp-mp-container {
+    border: 5px solid black;
+    width: 100%;
+    height: 185px;
+}
+
+.UI-hp-mp-FIRST-BORDER {
+    border: 5px solid white;
+}
+
+.UI-hp-mp-SECOND-BORDER {
+    background-color: black;
+    border: 5px solid black;
+    height: 160px;
+}
+
+#display-name {
+    margin-left: 155px;
+    margin-top: 20px;
+    color: white;
+}
+
+/* Status */
+.status-text-container {
+    color: grey;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 300px;
+    font-size: 25px;
+}
