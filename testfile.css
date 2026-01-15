@@ -3,17 +3,19 @@ body {
     color: white;
 }
 
-.main-ui-wrapper {
-    display: flex;
+
+#main-ui-wrapper {
+    display: none;
     justify-content: center; 
     align-items: center;     
     gap: 10px;               
-    margin-top: 450px;        
+    margin-top: 400px;        
 
 }
 
+
 /* Button */
-button {
+.Skills {
     font-family: 'Press Start 2P', cursive;
     background-color: transparent;
     border: transparent;
@@ -23,7 +25,7 @@ button {
     color: white;
 }
 
-button:hover {
+.Skills:hover {
     color: yellow;
 }
 
@@ -62,18 +64,48 @@ button:hover {
     height: 160px;
 }
 
-#display-name {
-    margin-left: 155px;
-    margin-top: 20px;
-    color: white;
-}
-
 /* Status */
-.status-text-container {
+.status-display-container {
     color: grey;
     display: flex;
     justify-content: center; 
     align-items: center; 
     gap: 300px;
     font-size: 25px;
+}
+
+.status-skills-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 300px;
+    font-size: 25px;
+}  
+
+#log-content {
+    /* This ensures the log doesn't push the borders around */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#log-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px; /* Small enough to fit the box */
+    text-transform: uppercase;
+}
+
+
+/* bug */
+
+#bug-hp {
+    position: relative;
+    top: 100px;
+    color: black;
+}
+
+#you {
+    position: relative;
+    color: black;
 }
