@@ -1,141 +1,119 @@
-const nameInput = document.getElementById("input-name");
-const displayName = document.getElementById("display-name");
+// --- DOM ELEMENTS ---
+const codeInput = document.getElementById("code-input");
+const errorHint = document.getElementById("error");
+const bugHpDisplay = document.getElementById("bug-hp");
+const winScreen = document.getElementById("win-screen");
 
-// Update preview name as you type
-nameInput.addEventListener('input', function() {
-    displayName.textContent = nameInput.value === "" ? "" : nameInput.value;
-});
+// --- GAME STATE ---
+let currentTaskIndex = 0;
+let hasFailedOnce = false;
 
+// --- TASK SYSTEM ---
+const tasks = [
+    { 
+        text: "function attack()", 
+        damage: 20, 
+        msg: "FUNCTION COMPILED!", 
+        hint: "Uncaught ReferenceError: attack is not defined", 
+        hint2: "Hint: make a function named attack"
+    },
+    { 
+        text: "let damage = 1;", 
+        damage: 30, 
+        msg: "VARIABLE DECLARED!", 
+        hint: "Uncaught SyntaxError: Unexpected identifier 'damage'",
+        hint2: "Hint: Variables use 'let' followed by '=' and number 1."
+    },
+    { 
+        text: "window.alert();", 
+        damage: 1000, 
+        msg: "SYSTEM ALERT!", 
+        hint: "Uncaught TypeError: window.alrt is not a function",
+        hint2: "Hint: alert is spelled a-l-e-r-t."
+    }
+];
+
+// --- CHARACTER CLASS ---
 class Character {
-    constructor(name, hp, mp) {
+    constructor(name, hp) {
         this.name = name;
         this.hp = hp;
         this.maxHp = hp;
-        this.mp = mp;
-        this.maxMp = mp;
-        this.isdefending = false
     }
-
-    attack(target) {
-        target.takeDamage(10);
-        console.log(`${this.name} attacks ${target.name}!`);
+    attack(target, damage) {
+        target.takeDamage(damage);
     }
-
-    acidSpit(target) {
-        target.takeDamage(20);
-        this.mp -= 10;
-        console.log(`${this.name} used ACID SPIT!`);
-    }
-
-    lifeDrain(target) {
-        target.takeDamage(8);
-        this.hp = Math.min(this.maxHp, this.hp + 10);
-        console.log(`${this.name} used LIFE DRAIN!`);
-    }
-
     takeDamage(amount) {
         this.hp = Math.max(0, this.hp - amount);
     }
 }
 
-// 1. Initialize characters
-let player = new Character("Hero", 100, 50);
-let bug = new Character("Bug", 50, 20);
+let player = new Character("Hero", 100);
+let bug = new Character("Bug", 100);
 
-function start() {
-    if (nameInput.value.trim() === "") {
-        nameInput.focus();
-        return;
+// --- GAME FUNCTIONS ---
+function checkCode() {
+    const userInput = codeInput.value.trim().toLowerCase().replace(/;$/, "");
+    const currentTask = tasks[currentTaskIndex];
+    const correctTarget = currentTask.text.toLowerCase().replace(/;$/, "");
+
+    if (userInput === correctTarget) {
+        player.attack(bug, currentTask.damage);
+        showLog(currentTask.msg);
+        codeInput.value = ""; 
+        hasFailedOnce = false; // Reset hint state
+        currentTaskIndex = (currentTaskIndex + 1) % tasks.length;
+        updateUI();
+        if (bug.hp <= 0) {
+            setTimeout(() => {
+                winScreen.style.display = "flex";
+            }, 1500);
+        } else {
+            setTimeout(bugTurn, 2000);
+        }
+    } else {
+        player.takeDamage(20);
+        showLog("SYNTAX ERROR!");
+        hasFailedOnce = true; // Trigger helper hint
+        updateUI();
+        codeInput.classList.add("error-shake");
+        setTimeout(() => codeInput.classList.remove("error-shake"), 500);
     }
+}
 
-    // Update the player object with the chosen name
-    player.name = nameInput.value;
-    displayName.textContent = player.name;
-
-    document.getElementById("setup-screen").style.display = "none";
-    document.getElementById("main-ui-wrapper").style.display = "flex";
-    
-    updateUI(); 
-    console.log("Game Started!");
+function bugTurn() {
+    if (bug.hp <= 0) return;
+    bug.attack(player, 10);
+    updateUI();
+    showLog("Bug sent a Virus!");
 }
 
 function showLog(message) {
     const stats = document.getElementById("stats-content");
     const logContainer = document.getElementById("log-content");
     const logText = document.getElementById("log-text");
-
-    // 1. Hide stats, show log
     stats.style.display = "none";
     logContainer.style.display = "block";
     logText.textContent = message;
-
-    // 2. Wait 1.5 seconds, then switch back
     setTimeout(() => {
         logContainer.style.display = "none";
         stats.style.display = "block";
     }, 1500);
 }
 
-function Attack() {
-    player.attack(bug);
-    updateUI();
-    
-    showLog(`${player.name} attacked!`);
-
-    if (bug.hp <= 0) {
-        setTimeout(() => {
-            showLog("Bug Defeated!");
-            const bugHpElement = document.getElementById("bug-hp");
-            if(bugHpElement) bugHpElement.textContent = "DEAD";
-        }, 1600);
-        return; 
-    }
-
-    setTimeout(bugTurn, 2000);
-}
-
-function Defend() {
-    player.isdefending = true;
-    showLog(`${player.name} is Defending`);
-
-    setTimeout(bugTurn, 1500);
-}
-
-function bugTurn() {
-    let choice = Math.floor(Math.random() * 3);
-    let message = "";
-
-    if (choice === 2) { 
-        bug.lifeDrain(player);
-        message = "Drain bypassed defense!";
-    } 
-    else if (player.isdefending) {
-        message = "Blocked! No damage.";
-    } 
-    else {
-        if (choice === 0) {
-            bug.attack(player);
-            message = "Bug bit you!";
-        } else {
-            bug.acidSpit(player);
-            message = "Acid Spit!";
-        }
-    }
-
-    player.isdefending = false;
-
-    updateUI();
-    showLog(message);
-}
-
 function updateUI() {
     document.getElementById("display-hp").textContent = `${player.hp}/${player.maxHp}`;
-    document.getElementById("display-mp").textContent = `${player.mp}/${player.maxMp}`;
-    
-    // Add this to your HTML if you want to see Bug's health
-    const you = document.getElementById("you");
-    if(you) you.textContent = `You`;
+    bugHpDisplay.textContent = bug.hp > 0 ? `Enemy: ${bug.hp} HP` : "DELETED";
 
-    const bugHpElement = document.getElementById("bug-hp");
-    if(bugHpElement) bugHpElement.textContent = `Bug HP: ${bug.hp}`;
+    const currentTask = tasks[currentTaskIndex];
+    if (hasFailedOnce) {
+        errorHint.textContent = currentTask.hint2;
+        errorHint.className = "helper-text";
+    } else {
+        errorHint.textContent = currentTask.hint;
+        errorHint.className = "error-text";
+    }
 }
+
+// Initialize game on page load
+updateUI();

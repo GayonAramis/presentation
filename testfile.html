@@ -9,55 +9,38 @@
 </head>
 <body>
 
-    <div id="setup-screen">
-        <input type="text" placeholder="Type your name.." id="input-name">
-        <button id="startUp" onclick="start()">start</button>
-    </div>
-
-    <h3 id="bug-hp"></h3>
-    <h3 id="you"></h3>
+    <h3 id="bug-hp">Enemy Status: 100 HP</h3>
+    <h3 id="error" style="font-size: 10px; color: #ff9900;">Follow the prompt to attack!</h3>
 
 <div id="main-ui-wrapper">
-
-    <div class="UI-ATTACK-container">
-        <div class="UI-ATTACK-FIRST-BORDER">
-            <div class="UI-ATTACK-SECOND-BORDER">
-
-                <div>
-                    <button id="display-Attack" class="Skills" onclick="Attack()">Attack</button>
-                    <button id="display-Defense" onclick="Defend()" class="Skills">Defend</button>
-                    <button id="Display-Item" class="Skills">Item</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <div class="UI-hp-mp-container">
-        <div class="UI-hp-mp-FIRST-BORDER">
-            <div class="UI-hp-mp-SECOND-BORDER">
-                <div class="status-display-container">
-                    <div>name</div>
-                    <div>hp</div>
-                    <div>mp</div>
-                </div>
-                <div class="status-skills-container">
-                    <div id="stats-content">
-                        <div id="display-name">name</div>
-                        <div id="display-hp">100/100</div>
-                        <div id="display-mp">50/50</div>
-                    </div>
-
-                    <div id="log-content" style="display: none; color: yellow;">
-                        <span id="log-text"></span>
-                    </div>
-                </div>
+        <div class="status-display-container">
+            <div>hp</div>
+        </div>
+        <div class="status-skills-container">
+            <div id="stats-content">
+                <div id="display-hp">100/100</div>
+            </div>
+            <div id="log-content" style="display: none; color: yellow;">
+                <span id="log-text"></span>
             </div>
         </div>
     </div>
-   
+
+    <p style="color: grey; font-size: 8px;">(Fail once to see a hint)</p>
+    <div id="coding-area">
+    <p>Type: <strong>error</strong></p>
+    <input type="text" id="code-input" placeholder="Type code here...">
+    <button onclick="checkCode()">Run Code</button>
+</div>
 
 </div>
+
+<div id="win-screen" style="display: none;">
+    <h1>YOU WIN!</h1>
+    <p>Bug Defeated!</p>
+</div>
+
 <script src="testfile.js"></script>
 </body>
 </html>
