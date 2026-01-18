@@ -78,6 +78,7 @@ body {
     50% { transform: translate3d(4px, 0, 0); }
 }
 
+/* WIN screen */
 #win-screen {
     position: fixed;
     top: 0;
@@ -101,4 +102,30 @@ body {
 #win-screen p {
     font-size: 24px;
     color: #00ff00;
+}
+
+/* LOSE screen */
+#lose-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 999;
+}
+
+#lose-screen h1 {
+    font-size: 48px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+#lose-screen p {
+    font-size: 24px;
+    color: red;
 }

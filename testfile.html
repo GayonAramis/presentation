@@ -10,7 +10,8 @@
 <body>
 
     <h3 id="bug-hp">Enemy Status: 100 HP</h3>
-    <h3 id="error" style="font-size: 10px; color: #ff9900;">Follow the prompt to attack!</h3>
+    <p>Type: <strong>error</strong></p>
+    <h3 id="error" style="font-size: 10px; color: white;">Follow the prompt to attack!</h3>
 
 <div id="main-ui-wrapper">
     <div class="UI-hp-mp-container">
@@ -29,9 +30,8 @@
 
     <p style="color: grey; font-size: 8px;">(Fail once to see a hint)</p>
     <div id="coding-area">
-    <p>Type: <strong>error</strong></p>
     <input type="text" id="code-input" placeholder="Type code here...">
-    <button onclick="checkCode()">Run Code</button>
+    <button onclick="checkCode()" id="code-runner">Run Code</button>
 </div>
 
 </div>
@@ -39,6 +39,11 @@
 <div id="win-screen" style="display: none;">
     <h1>YOU WIN!</h1>
     <p>Bug Defeated!</p>
+</div>
+
+<div id="lose-screen" style="display: none;">
+    <h1>YOU Lose!</h1>
+    <p>Bug Defeat you!</p>
 </div>
 
 <script src="testfile.js"></script>
