@@ -22,8 +22,7 @@ const tasks = [
 
 function checkCode() {
     if (playerHP <= 0 || bugHP <= 0) return;
-
-    const userInput = codeInput.value.trim().toLowerCase().replace(/;$/, "");
+    const userInput = codeInput.value.toLowerCase().replace(/;$/, "");
     const currentTask = tasks[currentTaskIndex];
     const correctTarget = currentTask.text.toLowerCase().replace(/;$/, "");
 
@@ -61,7 +60,7 @@ function handleFailure() {
 
     if (playerHP <= 0) {
         setTimeout(() => loseScreen.style.display = "flex", 1000);
-    } else {
+    } else{
         setTimeout(bugTurn, 1500);
     }
 }
@@ -91,6 +90,7 @@ function updateUI() {
         errorHint.textContent = currentTask.hint;
         errorHint.className = "error-text";
     }
+    
 }
 
 function showLog(message) {
