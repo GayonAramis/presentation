@@ -5,20 +5,26 @@ const winScreen = document.getElementById("win-screen");
 const loseScreen = document.getElementById("lose-screen");
 const button = document.getElementById("code-runner");
 
-// --- GAME STATE ---
+/*======================= 
+       GAME SYSTEM
+=======================*/
 let playerHP = 100;
 let bugHP = 100;
 let currentTaskIndex = 0;
 let hasFailedOnce = false;
 
-// --- Task --- 
+/*======================= 
+          TASK
+=======================*/
 const tasks = [
     { text: "function attack()", damage: 20, msg: "FUNCTION COMPILED!", hint: "Error: attack is not defined", hint2: "Hint: Type 'function attack()'" },
     { text: "let damage = 1;", damage: 30, msg: "VARIABLE DECLARED!", hint: "Error: Unexpected identifier", hint2: "Hint: use 'let damage = 1;'" },
     { text: "window.alert();", damage: 100, msg: "SYSTEM ALERT!", hint: "Error: alert is spelled wrong", hint2: "Hint: Type 'window.alert();'" }
 ];
 
-// --- CORE LOGIC ---
+/*======================= 
+          LOGIC
+=======================*/
 
 function checkCode() {
     if (playerHP <= 0 || bugHP <= 0) return;
@@ -77,7 +83,9 @@ function bugTurn() {
     }, 1500);
 }
 
-// --- UI UPDATERS ---
+/*======================= 
+       UPDATING UI
+=======================*/
 
 function updateUI() {
     document.getElementById("display-hp").textContent = `${playerHP}/100`;
