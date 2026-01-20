@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bug Slayer</title>
-    <link rel="stylesheet" href="presentation.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <h3 id="error" class="error-text">Follow the prompt to attack!</h3>
+    <h3 id="bug-hp">Enemy Status: 100 HP</h3>
+    <p>Type: <strong>error</strong></p>
+    <p style="color: grey; font-size: 8px;">type in the input box to debug the system</p>
 
     <div id="main-ui-wrapper">
         <div class="UI-hp-mp-container">
@@ -21,7 +23,7 @@
             <div class="status-skills-container">
                 <div id="stats-content">
                     <div class="hp-column"><div id="display-hp">100 HP</div></div>
-                    <div class="hp-column"><div id="bug-hp">100 HP</div></div>
+                    <div class="hp-column"><div id="enemy-hp">100 HP</div></div>
                 </div>
                 
                 <div id="log-content">
@@ -55,10 +57,10 @@
         <strong>How to play</strong>
         <p>Type the code in the hint. Correct code hits the bug errors let the bug hit you.</p><br>
         <p>If the error requires number just simply put 100</p><br>
-        <P>The error damage is 25 so you can only have 4 tries</P>
+        <p>The error damage is 25 so you can only have 4 tries</p>
         <button id="close-help">Close</button>
     </div>
 
-    <script src="presentation.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

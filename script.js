@@ -42,9 +42,8 @@ const tasks = [
 
 function checkCode() {
     if (playerHP <= 0 || bugHP <= 0) return;
-    
-    button.disabled = true;
-    const userInput = codeInput.value.trim();
+
+    const userInput = codeInput.value.trim().toLowerCase().replace(/;$/, "");
     const currentTask = tasks[currentTaskIndex];
     const correctTarget = currentTask.text;
 
@@ -86,8 +85,19 @@ function handleFailure() {
     if (playerHP <= 0) {
         setTimeout(() => loseScreen.style.display = "flex", 1000);
     } else {
-        setTimeout(() => button.disabled = false, 1200);
+        setTimeout(bugTurn, 1500);
     }
+}
+
+function bugTurn() {
+    if (bugHP <= 0 || playerHP <= 0) return;
+    
+    playerHP -= 10;
+    updateUI();
+    showLog("Bug sent an error attack!");
+    setTimeout(() => {
+        if (playerHP > 0) button.disabled = false;
+    }, 1500);
 }
 function updateUI() {
     document.getElementById("display-hp").textContent = `${playerHP} HP`;
@@ -101,6 +111,7 @@ function updateUI() {
         errorHint.textContent = currentTask.hint;
         errorHint.className = "error-text";
     }
+    
 }
 
 function showLog(message) {
