@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bug Slayer</title>
+    <title>Bug Slayer - Presentation Version</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <h3 id="error" class="error-text">Follow the prompt to attack!</h3>
-    <h3 id="bug-hp">Enemy Status: 100 HP</h3>
-    <p>Type: <strong>error</strong></p>
-    <p style="color: grey; font-size: 8px;">type in the input box to debug the system</p>
 
     <div id="main-ui-wrapper">
         <div class="UI-hp-mp-container">
@@ -23,10 +21,10 @@
             <div class="status-skills-container">
                 <div id="stats-content">
                     <div class="hp-column"><div id="display-hp">100 HP</div></div>
-                    <div class="hp-column"><div id="enemy-hp">100 HP</div></div>
+                    <div class="hp-column"><div id="bug-hp">100 HP</div></div>
                 </div>
                 
-                <div id="log-content">
+                <div id="log-content" style="display: none; color: yellow;">
                     <span id="log-text"></span>
                 </div>
             </div>
@@ -43,21 +41,21 @@
 
     <div id="win-screen" style="display: none;">
         <h1>YOU WIN!</h1>
-        <p>Bug Defeated!</p>
-        <button onclick="location.reload()">Reset</button>
+        <p>System Stabilized!</p>
+        <button onclick="location.reload()">Reboot Game</button>
     </div>
 
     <div id="lose-screen" style="display: none;">
         <h1>YOU LOSE!</h1>
-        <p>The Bug defeated you!</p>
-        <button onclick="location.reload()">Retry</button>
+        <p>The Bug took over the system!</p>
+        <button onclick="location.reload()">Try Again</button>
     </div>
 
     <div id="how-to" style="display: none;">
         <strong>How to play</strong>
-        <p>Type the code in the hint. Correct code hits the bug errors let the bug hit you.</p><br>
-        <p>If the error requires number just simply put 100</p><br>
-        <p>The error damage is 25 so you can only have 4 tries</p>
+        <p>At the top of the screen you will see an error your objective is to fix the error</p>
+        <p>Look at the error and type the correct JavaScript code into the input box.</p>
+        <p>Click the "Run Code" button to submit your fix.</p>
         <button id="close-help">Close</button>
     </div>
 
