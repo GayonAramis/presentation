@@ -4,34 +4,49 @@ const bugHpDisplay = document.getElementById("bug-hp");
 const winScreen = document.getElementById("win-screen");
 const loseScreen = document.getElementById("lose-screen");
 const button = document.getElementById("code-runner");
+const helpBtn = document.getElementById("help-btn");
+const howTo = document.getElementById("how-to");
+const closeHelp = document.getElementById("close-help");
 
-/*======================= 
-       GAME SYSTEM
-=======================*/
 let playerHP = 100;
 let bugHP = 100;
 let currentTaskIndex = 0;
 let hasFailedOnce = false;
 
-/*======================= 
-          TASK
-=======================*/
 const tasks = [
-    { text: "function attack()", damage: 20, msg: "FUNCTION COMPILED!", hint: "Error: attack is not defined", hint2: "Hint: Type 'function attack()'" },
-    { text: "let damage = 1;", damage: 30, msg: "VARIABLE DECLARED!", hint: "Error: Unexpected identifier", hint2: "Hint: use 'let damage = 1;'" },
-    { text: "window.alert();", damage: 100, msg: "SYSTEM ALERT!", hint: "Error: alert is spelled wrong", hint2: "Hint: Type 'window.alert();'" }
+    { 
+        text: "let hp = 100;", 
+        damage: 25,
+        hint: "ReferenceError: hp is not defined", 
+        hint2: "Hint: You need to initialize the variable: 'let hp = 100;'" 
+    },
+    { 
+        text: "attack();", 
+        damage: 25,
+        hint: "TypeError: attack is not a function", 
+        hint2: "Hint: Call the function correctly: 'attack();'" 
+    },
+    { 
+        text: "bugHp === 100", 
+        damage: 25,
+        hint: "SyntaxError: Unexpected token 'bugHp = 100'", 
+        hint2: "Hint: use strict comparison:" 
+    },
+    { 
+        text: "this.hp", 
+        damage: 25,
+        hint: "ReferenceError: hp is not defined", 
+        hint2: "Hint: Access the property via the current object using 'this.hp'" 
+    }
 ];
-
-/*======================= 
-          LOGIC
-=======================*/
 
 function checkCode() {
     if (playerHP <= 0 || bugHP <= 0) return;
-
-    const userInput = codeInput.value.trim().toLowerCase().replace(/;$/, "");
+    
+    button.disabled = true;
+    const userInput = codeInput.value.trim();
     const currentTask = tasks[currentTaskIndex];
-    const correctTarget = currentTask.text.toLowerCase().replace(/;$/, "");
+    const correctTarget = currentTask.text;
 
     if (userInput === correctTarget) {
         handleSuccess(currentTask);
@@ -42,54 +57,41 @@ function checkCode() {
 
 function handleSuccess(task) {
     bugHP -= task.damage;
-    showLog(task.msg);
+    showLog("SUCCESS: HIT CONFIRMED!");
     codeInput.value = "";
     hasFailedOnce = false;
-    currentTaskIndex = (currentTaskIndex + 1) % tasks.length;
-    
+    currentTaskIndex++; 
+
+    // 2. Check if we've gone past the last task
+    if (currentTaskIndex >= tasks.length) {
+        currentTaskIndex = 0; 
+    }
+
     updateUI();
 
     if (bugHP <= 0) {
         setTimeout(() => winScreen.style.display = "flex", 1000);
     } else {
-        button.disabled = true;
-        setTimeout(bugTurn, 1500);
+        setTimeout(() => button.disabled = false, 1200);
     }
 }
 
+
 function handleFailure() {
-    playerHP -= 20;
+    playerHP -= 25;
     showLog("Wrong code! Bug attacked!");
     hasFailedOnce = true;
-    button.disabled = true;
-    
     updateUI();
 
     if (playerHP <= 0) {
         setTimeout(() => loseScreen.style.display = "flex", 1000);
     } else {
-        setTimeout(bugTurn, 1500);
+        setTimeout(() => button.disabled = false, 1200);
     }
 }
-
-function bugTurn() {
-    if (bugHP <= 0 || playerHP <= 0) return;
-    
-    playerHP -= 10;
-    updateUI();
-    showLog("Bug sent an error attack!");
-    setTimeout(() => {
-        if (playerHP > 0) button.disabled = false;
-    }, 1500);
-}
-
-/*======================= 
-       UPDATING UI
-=======================*/
-
 function updateUI() {
-    document.getElementById("display-hp").textContent = `${playerHP}/100`;
-    bugHpDisplay.textContent = bugHP > 0 ? `Enemy: ${bugHP} HP` : "DELETED";
+    document.getElementById("display-hp").textContent = `${playerHP} HP`;
+    bugHpDisplay.textContent = bugHP > 0 ? `${bugHP} HP` : "DELETED";
 
     const currentTask = tasks[currentTaskIndex];
     if (hasFailedOnce) {
@@ -112,8 +114,14 @@ function showLog(message) {
 
     setTimeout(() => {
         logContainer.style.display = "none";
-        stats.style.display = "block";
+        stats.style.display = "flex"; 
+        updateUI();
     }, 1200);
+}
+
+if (helpBtn && howTo && closeHelp) {
+    helpBtn.addEventListener("click", () => { howTo.style.display = "block"; });
+    closeHelp.addEventListener("click", () => { howTo.style.display = "none"; });
 }
 
 updateUI();

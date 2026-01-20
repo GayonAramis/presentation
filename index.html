@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Slayer</title>
+    <link rel="stylesheet" href="presentation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h3 id="error" class="error-text">Follow the prompt to attack!</h3>
+
+    <div id="main-ui-wrapper">
+        <div class="UI-hp-mp-container">
+            <div class="status-display-container">
+                <div>Player Health</div>
+                <div>Enemy Health</div>
+            </div>
+            
+            <div class="status-skills-container">
+                <div id="stats-content">
+                    <div class="hp-column"><div id="display-hp">100 HP</div></div>
+                    <div class="hp-column"><div id="bug-hp">100 HP</div></div>
+                </div>
+                
+                <div id="log-content">
+                    <span id="log-text"></span>
+                </div>
+            </div>
+        </div>
+
+        <div id="coding-area">
+            <input type="text" id="code-input" placeholder="Type code here..." autocomplete="off">
+            <div class="button-row">
+                <button onclick="checkCode()" id="code-runner">Run Code</button>
+                <button id="help-btn" type="button">How to Play</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="win-screen" style="display: none;">
+        <h1>YOU WIN!</h1>
+        <p>Bug Defeated!</p>
+        <button onclick="location.reload()">Reset</button>
+    </div>
+
+    <div id="lose-screen" style="display: none;">
+        <h1>YOU LOSE!</h1>
+        <p>The Bug defeated you!</p>
+        <button onclick="location.reload()">Retry</button>
+    </div>
+
+    <div id="how-to" style="display: none;">
+        <strong>How to play</strong>
+        <p>Type the code in the hint. Correct code hits the bug errors let the bug hit you.</p><br>
+        <p>If the error requires number just simply put 100</p><br>
+        <P>The error damage is 25 so you can only have 4 tries</P>
+        <button id="close-help">Close</button>
+    </div>
+
+    <script src="presentation.js"></script>
+</body>
+</html>
