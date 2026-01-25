@@ -25,10 +25,10 @@ The player must input the correct code to deal damage to the enemy
 */
 const Programming = [ //code
     { text: "let hp = 100", damage: 20, hint: "ReferenceError: declare an variable using let and equal to 100", hint2: "Hint: Declare the variable using 'let' named hp and equal to 100" },
-    { text: "attack()", damage: 20, hint: "TypeError: attack is not a function", hint2: "Hint: Add parentheses () to call the function" },
+    { text: "attack()", damage: 20, hint: "TypeError: make a function name attack", hint2: "Hint: Add parentheses () to call the function" },
     { text: "bugHp === 100", damage: 20, hint: "SyntaxError: bugHp = 100", hint2: "Hint: Use triple equals === to compare" },
-    { text: "console.log(hp)", damage: 20, hint: "Error: No output", hint2: "Hint: Use console.log() to print values" },
-    { text: "let name = 'Bug'", damage: 20, hint: "Error: String missing", hint2: "Hint: Wrap text in single or double quotes" }
+    { text: `console.log("hello")`, damage: 20, hint: "Error: make a console with string hello inside", hint2: "Hint: Use console.log() to print values" },
+    { text: "if () {}", damage: 20, hint: "Make an if condition", hint2: "Hint: Wrap text in single or double quotes" }
 ];
 
 const ReadingAndWriting= [  //RAW 4, 5, 7
