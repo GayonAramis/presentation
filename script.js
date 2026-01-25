@@ -13,7 +13,7 @@ const PlayerChoice = document.getElementById("subjectSelector");
 const changeSubjectText = document.getElementById("changeSubjectText");
 
 // GAME VARIABLES
-let playerHP = 100;
+let playerHP = 100;     
 let bugHP = 100;
 let currentTaskIndex = 0;
 let hasFailedOnce = false;
