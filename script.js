@@ -9,7 +9,8 @@ const helpBtn = document.getElementById("help-btn");
 const howTo = document.getElementById("how-to");
 const closeHelp = document.getElementById("close-help");
 const subjectWrapper = document.getElementById("subjectSelector-wrapper");
-
+const PlayerChoice = document.getElementById("subjectSelector");
+const changeSubjectText = document.getElementById("changeSubjectText");
 
 // GAME VARIABLES
 let playerHP = 100;
@@ -23,11 +24,11 @@ This array serve as the core for the game logic
 The player must input the correct code to deal damage to the enemy
 */
 const Programming = [ //code
-    { text: "let hp = 100;", damage: 20, hint: "ReferenceError: hp is not defined", hint2: "Hint: Declare the variable using 'let'" },
-    { text: "attack();", damage: 20, hint: "TypeError: attack is not a function", hint2: "Hint: Add parentheses () to call the function" },
+    { text: "let hp = 100", damage: 20, hint: "ReferenceError: declare an variable using let and equal to 100", hint2: "Hint: Declare the variable using 'let' named hp and equal to 100" },
+    { text: "attack()", damage: 20, hint: "TypeError: attack is not a function", hint2: "Hint: Add parentheses () to call the function" },
     { text: "bugHp === 100", damage: 20, hint: "SyntaxError: bugHp = 100", hint2: "Hint: Use triple equals === to compare" },
-    { text: "console.log(hp);", damage: 20, hint: "Error: No output", hint2: "Hint: Use console.log() to print values" },
-    { text: "let name = 'Bug';", damage: 20, hint: "Error: String missing", hint2: "Hint: Wrap text in single or double quotes" }
+    { text: "console.log(hp)", damage: 20, hint: "Error: No output", hint2: "Hint: Use console.log() to print values" },
+    { text: "let name = 'Bug'", damage: 20, hint: "Error: String missing", hint2: "Hint: Wrap text in single or double quotes" }
 ];
 
 const ReadingAndWriting= [  //RAW 4, 5, 7
@@ -112,7 +113,6 @@ if (SubjectSelector) {
 }
 
 
-    const PlayerChoice = document.getElementById("subjectSelector");
     let isGamestarted = false;
 /*
 This function is from a button named "Check Code" 
@@ -124,6 +124,8 @@ function GameStart() {
     isGamestarted = true;
     if (isGamestarted == true) {
         PlayerChoice.style.display = "none"
+        changeSubjectText.style.display = "none"
+        
     }
 
 
