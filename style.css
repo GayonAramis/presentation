@@ -1,3 +1,6 @@
+/* 
+The body porpuse is to put all the things that the other attribute doesnt have
+*/
 body {
     font-family: 'Press Start 2P', cursive;
     color: white;
@@ -5,6 +8,7 @@ body {
     padding: 20px;
     text-align: center;
 }
+
 
 #main-ui-wrapper {
     display: flex;
@@ -65,9 +69,17 @@ button {
 }
 
 #win-screen, #lose-screen {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: black; display: none; flex-direction: column;
-    justify-content: center; align-items: center; z-index: 1000;
+    position: fixed; 
+    top: 0; 
+    left: 0; width: 
+    100%; 
+    height: 100%;
+    background: black; 
+    display: none; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1000;
 }
 #how-to {
     position: fixed; 

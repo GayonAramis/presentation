@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detc</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+<div id="error-overlay" class="overlay">
+    <div class="vn-container">
+        <div class="name-tag" id="SpeakerName" style="display: none;"></div>
+        
+        <div class="dialog-box" id="DialogBox">
+            <button class="evidence" onclick="showEvidence()">evidence</button>
+
+            <div class="dialog-text">
+                <p id="message">ring... ring...</p>
+            </div>
+            
+            <div class="tutorial" style="color: red;">click this to continue</div>
+            <div class="next-arrow" onclick="NextButton()">❯</div>
+        </div>
+
+        <div id="choices" style="display:none"></div>
+
+        <!-- HIDDEN UNTIL DEADPERSON FOUND -->
+        <img id="deadperson-img" src="deadperson.png" alt="deadperson" onclick="showDeadPerson()" style="display:none;">
+        <div id="deadperson-box" style="display:none;"></div>
+    </div>
+</div>
+
+<script src="test2.js"></script>
+</body>
+</html>

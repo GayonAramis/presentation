@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bug Slayer - Presentation Version</title>
+    <title>document</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h3 id="error" class="error-text">Follow the hint to attack!</h3>
 
-    <h3 id="error" class="error-text">Follow the prompt to attack!</h3>
-
+    <!-- Main wrapper
+        Is the Main core or basiccally the parent 
+        it contains the player/bug health and the log where 
+        all the message  from showLog() 
+    -->
     <div id="main-ui-wrapper">
         <div class="UI-hp-mp-container">
             <div class="status-display-container">
@@ -31,10 +35,23 @@
         </div>
 
         <div id="coding-area">
-            <input type="text" id="code-input" placeholder="Type code here..." autocomplete="off">
+            <input type="text" id="code-input" placeholder="Type code here...">
             <div class="button-row">
-                <button onclick="checkCode()" id="code-runner">Run Code</button>
+                <button onclick="GameStart()" id="code-runner">Play</button>
+                <!--Basically the toturial  on how to play the game if the player 
+                    doesnt know the game mechanics-->
                 <button id="help-btn" type="button">How to Play</button>
+                <!--Subject selector is where the user can change his preffered subject-->
+                    <div class="subjectSelector-wrapper"> 
+                        <select id="subjectSelector"> 
+                            <option value="Programming">Programming</option>
+                            <option value="ReadingAndWriting">Read and Writing</option>
+                            <option value="PagbasaAtPagsusuri">PagbasaAtPagsusuri</option>
+                            <option value="Philosophy">Philosophy</option>
+                            <option value="Statistics">Statistics</option>
+                            <option value="PR">PR</option>
+                         </select>
+                    </div>
             </div>
         </div>
     </div>
@@ -58,6 +75,7 @@
         <p>Click the "Run Code" button to submit your fix.</p>
         <button id="close-help">Close</button>
     </div>
+
 
     <script src="script.js"></script>
 </body>
